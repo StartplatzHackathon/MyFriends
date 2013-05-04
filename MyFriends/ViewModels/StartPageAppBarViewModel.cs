@@ -13,6 +13,8 @@ namespace MyFriends.ViewModels
 {
     public class StartPageAppBarViewModel : BindableBase
     {
+        private IMessenger _messenger;
+
         public RelayCommand NewGiftCommand
         {
             get;
@@ -21,7 +23,7 @@ namespace MyFriends.ViewModels
 
         public RelayCommand ShowPeopleCommand { private set; get; }
 
-        public StartPageAppBarViewModel()
+        public StartPageAppBarViewModel(IMessenger messenger)
         {
             NewGiftCommand = new RelayCommand(NewGift);
             ShowPeopleCommand = new RelayCommand(ShowPeople);

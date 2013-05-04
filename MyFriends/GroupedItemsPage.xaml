@@ -27,7 +27,7 @@
     
     <Page.BottomAppBar>
         <AppBar ContentTemplate="{StaticResource GroupedItemsPageBottomAppBar}" 
-                Content="{Binding AppBar}"
+                Content="{Binding StartPageAppBar, Source={StaticResource ViewModelSource}}"
                 IsOpen="True"
                 IsSticky="True"
                 Background="#FF74002A"

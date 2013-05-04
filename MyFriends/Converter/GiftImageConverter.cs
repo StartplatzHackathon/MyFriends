@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyFriends.DataModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,22 +34,8 @@ namespace MyFriends.Converter
         }
 
         private BitmapImage CreateBitmapImage(Guid imageId)
-        {            
-            var bitmapImage = new BitmapImage();
-
-            Window.Current.Dispatcher.RunAsync(CoreDispatcherPriority.High, async () => 
-            {
-                String imageName = String.Format("{0:N}", imageId);
-                var folder = await ApplicationData.Current.RoamingFolder.CreateFolderAsync("GiftImages", CreationCollisionOption.OpenIfExists);
-                try
-                {
-                    var imageFile = await folder.GetFileAsync(imageName);
-                    await bitmapImage.SetSourceAsync(await imageFile.OpenReadAsync());
-                }
-                catch { }
-            });
-
-            return bitmapImage;
+        {
+            return ImageManager.GetGiftImage(imageId);
         }
     }
 }
