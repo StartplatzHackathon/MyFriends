@@ -8,6 +8,7 @@ using MyFriends.Annotations;
 using MyFriends.Messages;
 using MyFriends.Services;
 using Windows.ApplicationModel.Contacts;
+using Windows.Foundation;
 using Windows.Media.Capture;
 using Windows.Storage.Streams;
 
@@ -46,7 +47,6 @@ namespace MyFriends.ViewModels
                                     Name = ci.Name
                                 };
                 Items.Add(model);
-
                 
                 var stream =await ci.GetThumbnailAsync();
                 if (stream.Size == 0)
@@ -64,6 +64,9 @@ namespace MyFriends.ViewModels
         async Task<IRandomAccessStreamWithContentType> GetCameraStream()
         {
             var pictureCapture = new CameraCaptureUI();
+            pictureCapture.PhotoSettings.CroppedAspectRatio= new Size(60,60);
+            pictureCapture.PhotoSettings.Format=CameraCaptureUIPhotoFormat.Jpeg;
+            pictureCapture.PhotoSettings.MaxResolution=CameraCaptureUIMaxPhotoResolution.MediumXga;
             var file = await pictureCapture.CaptureFileAsync(CameraCaptureUIMode.Photo);
             if (file == null)
                 return null;
