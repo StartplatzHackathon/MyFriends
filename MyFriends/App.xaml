@@ -24,6 +24,7 @@
 
             <x:String x:Key="AppName">MyFriends</x:String>
             <converter:GiftImageConverter x:Key="GiftImageConverter" />
+            <converter:PersonImageConverter x:Key="PersonImageConverter" />
             <vm:ViewModelLocator x:Key="ViewModelSource" />
         </ResourceDictionary>
     </Application.Resources>

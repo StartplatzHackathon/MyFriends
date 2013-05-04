@@ -2,12 +2,19 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using MyFriends.Annotations;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace MyFriends.ViewModels
 {
     public class PersonOverViewModel : INotifyPropertyChanged
     {
+        public PersonOverViewModel()
+        {
+            Id = Guid.NewGuid();
+        }
         string _name;
+        Guid _imageId;
+
         public string Name
         {
             get { return _name; }
@@ -19,6 +26,18 @@ namespace MyFriends.ViewModels
             }
         }
 
+        public Guid ImageId
+        {
+            get { return _imageId; }
+            set
+            {
+                if (Equals(value, _imageId)) return;
+                _imageId = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Guid Id { get; set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

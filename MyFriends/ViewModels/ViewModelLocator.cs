@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyFriends.Services;
 
 namespace MyFriends.ViewModels
 {
@@ -34,7 +35,11 @@ namespace MyFriends.ViewModels
 
             SimpleIoc.Default.Register<IMessenger>(() => Messenger.Default);
             SimpleIoc.Default.Register<StartPageAppBarViewModel>();
+            SimpleIoc.Default.Register<StoreImages>();
+            SimpleIoc.Default.Register<LoadImages>();
+
             SimpleIoc.Default.Register<PeopleViewModel>(true);
+
         }
 
         public StartPageAppBarViewModel StartPageAppBar 
