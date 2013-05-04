@@ -18,10 +18,14 @@ namespace MyFriends.DataModel
 
             Window.Current.Dispatcher.RunAsync(CoreDispatcherPriority.High, async () =>
             {
-                String imagePath = String.Format("GiftImages/{0:N}", bitmapImage);
-                var imageFile = await ApplicationData.Current.RoamingFolder.GetFileAsync(imagePath);
-                await bitmapImage.SetSourceAsync(await imageFile.OpenReadAsync());
-
+                String imageName = String.Format("{0:N}", imageId);
+                var folder = await ApplicationData.Current.RoamingFolder.CreateFolderAsync("GiftImages", CreationCollisionOption.OpenIfExists);
+                try
+                {
+                    var imageFile = await folder.GetFileAsync(imageName);
+                    await bitmapImage.SetSourceAsync(await imageFile.OpenReadAsync());
+                }
+                catch { }
             });
 
             return bitmapImage;
