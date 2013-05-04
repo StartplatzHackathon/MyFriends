@@ -106,6 +106,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\SuspensionManagerException.cs" />
+    <Compile Include="DataModel\Gift.cs" />
+    <Compile Include="DataModel\GPSPosition.cs" />
+    <Compile Include="DataModel\Person.cs" />
+    <Compile Include="DataModel\PersonGift.cs" />
+    <Compile Include="DataModel\SampleDataCommon.cs" />
+    <Compile Include="DataModel\SampleDataGroup.cs" />
+    <Compile Include="DataModel\SampleDataItem.cs" />
     <Compile Include="GroupedItemsPage.xaml.cs">
       <DependentUpon>GroupedItemsPage.xaml</DependentUpon>
     </Compile>
