@@ -18,7 +18,7 @@ namespace MyFriends.DataModel
 
             Window.Current.Dispatcher.RunAsync(CoreDispatcherPriority.High, async () =>
             {
-                String imageName = String.Format("{0:N}", imageId);
+                String imageName = String.Format("{0:N}", giftId);
                 var folder = await ApplicationData.Current.RoamingFolder.CreateFolderAsync("GiftImages", CreationCollisionOption.OpenIfExists);
                 try
                 {
