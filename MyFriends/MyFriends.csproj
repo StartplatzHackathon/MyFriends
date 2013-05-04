@@ -109,6 +109,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\SuspensionManagerException.cs" />
+    <Compile Include="Converter\GiftImageConverter.cs" />
+    <Compile Include="DataModel\ImageManager.cs" />
     <Compile Include="ViewModels\PeopleViewModel.cs" />
     <Compile Include="Views\ContactDetailPage.xaml.cs">
       <DependentUpon>ContactDetailPage.xaml</DependentUpon>

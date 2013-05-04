@@ -10,6 +10,7 @@
     d:DesignWidth="400">
     
     <StackPanel>
+        <Image Source="{Binding ImageId,Converter={StaticResource GiftImageConverter}}" />
     	<TextBlock TextWrapping="Wrap" Text="TextBlock"/>
     	<TextBox TextWrapping="Wrap" Text="TextBox"/>
     </StackPanel>
