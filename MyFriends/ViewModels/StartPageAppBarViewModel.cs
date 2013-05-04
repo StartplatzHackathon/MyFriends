@@ -18,14 +18,22 @@ namespace MyFriends.ViewModels
             private set;
         }
 
+        public RelayCommand ShowPeopleCommand { private set; get; }
+
         public StartPageAppBarViewModel()
         {
             NewGiftCommand = new RelayCommand(() => NewGift());
+            ShowPeopleCommand = new RelayCommand(() => ShowPeople());
+        }
+
+        void ShowPeople()
+        {
+            Messenger.Default.Send<Guid>(Guid.Empty,NavigationTokens.PeopleOverview);
         }
 
         private void NewGift()
         {
-            Messenger.Default.Send<Guid>(Guid.Empty, MessageTokens.Navigation);
+            Messenger.Default.Send<Guid>(Guid.Empty, NavigationTokens.EditGift);
         }
     }
 }

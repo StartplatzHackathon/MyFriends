@@ -1,15 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MyFriends.DataModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using MyFriends.Annotations;
 
 namespace MyFriends.ViewModels
 {
-    public class PeopleViewModel
+    public class PeopleViewModel : INotifyPropertyChanged
     {
-        ObservableCollection<Person> People { get; set; }
+        ObservableCollection<PersonOverViewModel> _items;
+
+        public PeopleViewModel()
+        {
+            Items = new ObservableCollection<PersonOverViewModel>
+                         {
+                             new PersonOverViewModel() {Name = "Albert"}
+                         };
+            Title = "Personen";
+        }
+
+        public ObservableCollection<PersonOverViewModel> Items
+        {
+            get { return _items; }
+            set { _items = value; OnPropertyChanged(); }
+        }
+
+        public string Title { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

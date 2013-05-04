@@ -112,6 +112,7 @@
     <Compile Include="Converter\GiftImageConverter.cs" />
     <Compile Include="DataModel\ImageManager.cs" />
     <Compile Include="ViewModels\PeopleViewModel.cs" />
+    <Compile Include="ViewModels\PersonOverViewModel.cs" />
     <Compile Include="Views\ContactDetailPage.xaml.cs">
       <DependentUpon>ContactDetailPage.xaml</DependentUpon>
     </Compile>
@@ -140,7 +141,7 @@
     <Compile Include="Common\RichTextColumns.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="ViewModels\GiftViewModel.cs" />
-    <Compile Include="ViewModels\MessageTokens.cs" />
+    <Compile Include="ViewModels\NavigationTokens.cs" />
     <Compile Include="ViewModels\StartPageAppBarViewModel.cs" />
     <Compile Include="Views\NewGiftView.xaml.cs">
       <DependentUpon>NewGiftView.xaml</DependentUpon>

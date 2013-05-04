@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using MyFriends.DataModel;
+using MyFriends.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -34,7 +35,8 @@ namespace MyFriends
         {
             base.OnNavigatedTo(e);
 
-            Messenger.Default.Register<Guid>(this, MessageTokens.Navigation, id => NavigateToGift(id));
+            Messenger.Default.Register<Guid>(this, NavigationTokens.EditGift, id => NavigateToGift(id));
+            Messenger.Default.Register<Guid>(this, NavigationTokens.PeopleOverview, id => NavigateToPeopleOverview());
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -43,7 +45,12 @@ namespace MyFriends
 
             Messenger.Default.Unregister(this);
         }
-        
+
+        void NavigateToPeopleOverview()
+        {
+            this.Frame.Navigate(typeof(ContactDetailPage));
+        }
+
         private void NavigateToGift(Guid giftId)
         {
             this.Frame.Navigate(typeof(GroupDetailPage), giftId);
