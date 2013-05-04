@@ -399,6 +399,14 @@
         </Setter>
     </Style>
 
+    <Style x:Key="NewGiftAppBarButtonStyle" TargetType="ButtonBase" BasedOn="{StaticResource AppBarButtonStyle}">
+        <Setter Property="AutomationProperties.AutomationId" Value="NewGiftAppBarButton"/>
+        <Setter Property="AutomationProperties.Name" Value="New Gift"/>
+        <Setter Property="Content" Value=""/>
+    </Style>
+
+    
+    
     <!-- 
         Standard AppBarButton Styles for use with Button and ToggleButton
     
