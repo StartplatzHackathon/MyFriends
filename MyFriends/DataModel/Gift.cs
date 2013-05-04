@@ -23,6 +23,7 @@ namespace MyFriends.DataModel
         public string Name { get; set; }
 
         public string PlaceName { get; set; }
+
         public GPSPosition Position { get; set; }
 
         public decimal Price { get; set; }
