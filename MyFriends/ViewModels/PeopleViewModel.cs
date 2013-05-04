@@ -9,20 +9,23 @@ using Windows.ApplicationModel.Contacts;
 
 namespace MyFriends.ViewModels
 {
-    public class PeopleViewModel
+    public class PeopleViewModel : INotifyPropertyChanged
     {
+        readonly IMessenger _messenger;
+
         ObservableCollection<PersonOverViewModel> _items;
         string _title;
 
-        public PeopleViewModel()
+        public PeopleViewModel(IMessenger messenger)
         {
+            _messenger = messenger;
             Items = new ObservableCollection<PersonOverViewModel>
                         {
                             new PersonOverViewModel() {Name = "Albert"}
                         };
             Title = "Personen";
 
-            Messenger.Default.Register<NewPersonMessage>(this, NewPerson);
+            _messenger.Register<NewPersonMessage>(this, NewPerson);
         }
 
         async void NewPerson(NewPersonMessage newPersonMessage)

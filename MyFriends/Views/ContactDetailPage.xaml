@@ -19,6 +19,14 @@
             Source="{Binding People.People}"
             d:Source="{Binding People, Source={d:DesignInstance Type=viewModels:PeopleViewModel, IsDesignTimeCreatable=True}}"/>-->
     </Page.Resources>
+    <Page.BottomAppBar>
+        <AppBar ContentTemplate="{StaticResource GroupedItemsPageBottomAppBar}" 
+                Content="{Binding StartPageAppBar, Source={StaticResource ViewModelSource}}"
+                IsOpen="True"
+                IsSticky="True"
+                Background="#FF74002A"
+        />
+    </Page.BottomAppBar>
 
     <!--
         This grid acts as a root panel for the page that defines two rows:
@@ -26,7 +34,7 @@
         * Row 1 contains the rest of the page layout
     -->
     <Grid Style="{StaticResource LayoutRootStyle}"      
-          DataContext="{Binding People}"
+          DataContext="{Binding  PeopleViewModel, Source={StaticResource ViewModelSource}}"
             d:DataContext="{Binding  Source={d:DesignInstance Type=viewModels:PeopleViewModel, IsDesignTimeCreatable=True}}">
 
         <Grid.RowDefinitions>

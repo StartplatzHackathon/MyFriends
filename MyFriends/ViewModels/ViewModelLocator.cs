@@ -34,6 +34,7 @@ namespace MyFriends.ViewModels
 
             SimpleIoc.Default.Register<IMessenger>(() => Messenger.Default);
             SimpleIoc.Default.Register<StartPageAppBarViewModel>();
+            SimpleIoc.Default.Register<PeopleViewModel>(true);
         }
 
         public StartPageAppBarViewModel StartPageAppBar 
@@ -42,6 +43,11 @@ namespace MyFriends.ViewModels
             {
                 return SimpleIoc.Default.GetInstance<StartPageAppBarViewModel>();
             }
+        }
+
+        public PeopleViewModel PeopleViewModel
+        {
+            get { return SimpleIoc.Default.GetInstance<PeopleViewModel>(); }
         }
     }
 }
