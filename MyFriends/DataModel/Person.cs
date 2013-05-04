@@ -9,5 +9,7 @@ namespace MyFriends.DataModel
             Id = Guid.NewGuid();
         }
         public Guid Id { get; private set; }
+
+        public string Name { get; set; }
     }
 }

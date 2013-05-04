@@ -12,7 +12,11 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Style="{StaticResource NewGiftAppBarButtonStyle}" 
-                        Command="{Binding NewGiftCommand}"
+                        Command="{Binding ShowPeopleCommand}"
+                        AutomationProperties.Name="Show People"
+                />
+                <Button Style="{StaticResource NewGiftAppBarButtonStyle}" 
+                        AutomationProperties.Name="New Person"
                 />
             </StackPanel>
         </Grid>

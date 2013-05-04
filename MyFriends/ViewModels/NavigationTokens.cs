@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyFriends.ViewModels
 {
-    public enum MessageTokens
+    public enum NavigationTokens
     {
-        Navigation
+        EditGift,
+        PeopleOverview
     }
 }

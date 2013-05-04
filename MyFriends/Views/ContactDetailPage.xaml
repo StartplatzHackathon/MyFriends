@@ -14,10 +14,10 @@
     <Page.Resources>
 
         <!-- Collection of items displayed by this page -->
-        <CollectionViewSource
+        <!--<CollectionViewSource
             x:Name="peopleViewSource"
-            Source="{Binding People}"
-            d:Source="{Binding Source={d:DesignInstance Type=viewModels:PeopleViewModel, IsDesignTimeCreatable=True}}"/>
+            Source="{Binding People.People}"
+            d:Source="{Binding People, Source={d:DesignInstance Type=viewModels:PeopleViewModel, IsDesignTimeCreatable=True}}"/>-->
     </Page.Resources>
 
     <!--
@@ -25,70 +25,16 @@
         * Row 0 contains the back button and page title
         * Row 1 contains the rest of the page layout
     -->
-    <Grid
-        Style="{StaticResource LayoutRootStyle}"
-       >
+    <Grid Style="{StaticResource LayoutRootStyle}"      
+          DataContext="{Binding People}"
+            d:DataContext="{Binding  Source={d:DesignInstance Type=viewModels:PeopleViewModel, IsDesignTimeCreatable=True}}">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Horizontal scrolling grid used in most view states -->
-        <!--<GridView
-            x:Name="itemGridView"
-            AutomationProperties.AutomationId="ItemGridView"
-            AutomationProperties.Name="Items In Group"
-            TabIndex="1"
-            Grid.RowSpan="2"
-            Padding="120,126,120,50"
-            ItemsSource="{Binding Source={StaticResource peopleViewSource}}"
-            ItemTemplate="{StaticResource Standard500x130ItemTemplate}"
-            SelectionMode="None"
-            IsSwipeEnabled="false"
-            IsItemClickEnabled="True"
-            ItemClick="ItemView_ItemClick">
-
-            <GridView.Header>
-                <StackPanel Width="480" Margin="0,4,14,0">
-                    <TextBlock Text="{Binding Subtitle}" Margin="0,0,18,20" Style="{StaticResource SubheaderTextStyle}" MaxHeight="60"/>
-                    <Image Source="{Binding Image}" Height="400" Margin="0,0,18,20" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
-                    <TextBlock Text="{Binding Description}" Margin="0,0,18,0" Style="{StaticResource BodyTextStyle}"/>
-                </StackPanel>
-            </GridView.Header>
-            <GridView.ItemContainerStyle>
-                <Style TargetType="FrameworkElement">
-                    <Setter Property="Margin" Value="52,0,0,10"/>
-                </Style>
-            </GridView.ItemContainerStyle>
-        </GridView>-->
-
         <!-- Vertical scrolling list only used when snapped -->
-        <ListView
-            x:Name="itemListView"
-            AutomationProperties.AutomationId="ItemListView"
-            AutomationProperties.Name="Items In Group"
-            TabIndex="1"
-            Grid.Row="1"
-            Visibility="Collapsed"
-            Padding="10,0,0,60"
-            ItemsSource="{Binding Source={StaticResource peopleViewSource}}"
-            ItemTemplate="{StaticResource Standard80ItemTemplate}"
-            SelectionMode="None"
-            IsSwipeEnabled="false"
-            IsItemClickEnabled="True"
-            ItemClick="ItemView_ItemClick">
-
-            <ListView.Header>
-                <StackPanel>
-                    <TextBlock Text="{Binding Subtitle}" Margin="10,0,18,20" Style="{StaticResource TitleTextStyle}" MaxHeight="60"/>
-                    <Image Source="{Binding Image}" Margin="10,0,18,0" MaxHeight="160" Stretch="UniformToFill" AutomationProperties.Name="{Binding Title}"/>
-                    <TextBlock Margin="10,20,18,30" Text="{Binding Description}" Style="{StaticResource BodyTextStyle}"/>
-                </StackPanel>
-            </ListView.Header>
-        </ListView>
-
-        <!-- Back button and page title -->
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -97,6 +43,32 @@
             <Button x:Name="backButton" Click="GoBack" IsEnabled="{Binding Frame.CanGoBack, ElementName=pageRoot}" Style="{StaticResource BackButtonStyle}"/>
             <TextBlock x:Name="pageTitle" Text="{Binding Title}" Style="{StaticResource PageHeaderTextStyle}" Grid.Column="1" IsHitTestVisible="false"/>
         </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+            </Grid.ColumnDefinitions>
+            <ListView  
+    		x:Name="itemListView"
+    		AutomationProperties.AutomationId="ItemListView"
+    		AutomationProperties.Name="Items In Group"
+    		TabIndex="1"
+    		Grid.Column="0"
+    		Padding="10,0,0,60"
+    		ItemsSource="{Binding Items}"
+            ItemTemplate="{StaticResource PeopleOverviewItemTemplate}"
+    		SelectionMode="None"
+    		IsSwipeEnabled="false"
+    		IsItemClickEnabled="True"
+    		ItemClick="ItemView_ItemClick">
+            </ListView>
+
+        </Grid>
+        <!-- Vertical scrolling list only used when snapped -->
+
+        <!-- Back button and page title -->
 
         <VisualStateManager.VisualStateGroups>
 

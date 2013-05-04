@@ -1718,6 +1718,21 @@
         </Grid>
     </DataTemplate>
 
+    <DataTemplate x:Key="PeopleOverviewItemTemplate">
+        <Grid Margin="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Background="{StaticResource ListViewItemPlaceholderBackgroundThemeBrush}" Width="60" Height="60">
+                <!--<Image Source="{Binding Image}" Stretch="UniformToFill"/>-->
+            </Border>
+            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                <TextBlock Text="{Binding Name}" Style="{StaticResource ItemTextStyle}" MaxHeight="40"/>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+
     <!-- Grid-appropriate 300 by 70 pixel item template as seen in the SearchResultsPage -->
     <DataTemplate x:Key="StandardSmallIcon300x70ItemTemplate">
         <Grid Width="294" Margin="6">
