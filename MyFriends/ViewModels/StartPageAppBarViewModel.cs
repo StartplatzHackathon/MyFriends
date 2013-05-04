@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyFriends.Messages;
 
 namespace MyFriends.ViewModels
 {
@@ -22,9 +23,17 @@ namespace MyFriends.ViewModels
 
         public StartPageAppBarViewModel()
         {
-            NewGiftCommand = new RelayCommand(() => NewGift());
-            ShowPeopleCommand = new RelayCommand(() => ShowPeople());
+            NewGiftCommand = new RelayCommand(NewGift);
+            ShowPeopleCommand = new RelayCommand(ShowPeople);
+            NewPersonCommand = new RelayCommand(NewPerson);
         }
+
+        void NewPerson()
+        {
+            Messenger.Default.Send<NewPersonMessage>(new NewPersonMessage());
+        }
+
+        protected RelayCommand NewPersonCommand { get; private set; }
 
         void ShowPeople()
         {

@@ -16,6 +16,7 @@
                         AutomationProperties.Name="Show People"
                 />
                 <Button Style="{StaticResource NewGiftAppBarButtonStyle}" 
+                        Command="{Binding NewPersonCommand}"
                         AutomationProperties.Name="New Person"
                 />
             </StackPanel>
