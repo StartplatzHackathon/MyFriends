@@ -1,23 +1,23 @@
 ﻿<common:LayoutAwarePage
     x:Name="pageRoot"
-    x:Class="MyFriends.GroupDetailPage"
+    x:Class="MyFriends.Views.ContactDetailPage"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MyFriends"
     xmlns:common="using:MyFriends.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:dataModel="using:MyFriends.DataModel"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:dataModel="using:MyFriends.DataModel"
+    xmlns:viewModels="using:MyFriends.ViewModels"
     mc:Ignorable="d">
 
     <Page.Resources>
 
         <!-- Collection of items displayed by this page -->
         <CollectionViewSource
-            x:Name="itemsViewSource"
-            Source="{Binding Items}"
-            d:Source="{Binding AllGroups[0].Items, Source={d:DesignInstance Type=dataModel:SampleDataSource, IsDesignTimeCreatable=True}}"/>
+            x:Name="peopleViewSource"
+            Source="{Binding People}"
+            d:Source="{Binding Source={d:DesignInstance Type=viewModels:PeopleViewModel, IsDesignTimeCreatable=True}}"/>
     </Page.Resources>
 
     <!--
@@ -27,8 +27,7 @@
     -->
     <Grid
         Style="{StaticResource LayoutRootStyle}"
-        DataContext="{Binding Group}"
-        d:DataContext="{Binding AllGroups[0], Source={d:DesignInstance Type=dataModel:SampleDataSource, IsDesignTimeCreatable=True}}">
+       >
 
         <Grid.RowDefinitions>
             <RowDefinition Height="140"/>
@@ -36,14 +35,14 @@
         </Grid.RowDefinitions>
 
         <!-- Horizontal scrolling grid used in most view states -->
-        <GridView
+        <!--<GridView
             x:Name="itemGridView"
             AutomationProperties.AutomationId="ItemGridView"
             AutomationProperties.Name="Items In Group"
             TabIndex="1"
             Grid.RowSpan="2"
             Padding="120,126,120,50"
-            ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
+            ItemsSource="{Binding Source={StaticResource peopleViewSource}}"
             ItemTemplate="{StaticResource Standard500x130ItemTemplate}"
             SelectionMode="None"
             IsSwipeEnabled="false"
@@ -62,7 +61,7 @@
                     <Setter Property="Margin" Value="52,0,0,10"/>
                 </Style>
             </GridView.ItemContainerStyle>
-        </GridView>
+        </GridView>-->
 
         <!-- Vertical scrolling list only used when snapped -->
         <ListView
@@ -73,7 +72,7 @@
             Grid.Row="1"
             Visibility="Collapsed"
             Padding="10,0,0,60"
-            ItemsSource="{Binding Source={StaticResource itemsViewSource}}"
+            ItemsSource="{Binding Source={StaticResource peopleViewSource}}"
             ItemTemplate="{StaticResource Standard80ItemTemplate}"
             SelectionMode="None"
             IsSwipeEnabled="false"

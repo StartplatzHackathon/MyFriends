@@ -109,6 +109,10 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\SuspensionManagerException.cs" />
+    <Compile Include="ViewModels\PeopleViewModel.cs" />
+    <Compile Include="Views\ContactDetailPage.xaml.cs">
+      <DependentUpon>ContactDetailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\Gift.cs" />
     <Compile Include="DataModel\GPSPosition.cs" />
     <Compile Include="DataModel\Person.cs" />
@@ -163,6 +167,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Common\StandardStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ContactDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
