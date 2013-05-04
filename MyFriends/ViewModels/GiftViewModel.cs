@@ -22,10 +22,10 @@ namespace MyFriends.ViewModels
 
         public String PlaceName
         {
-            get { return _name; }
+            get { return _placeName; }
             set
             {
-                SetProperty(ref _name, value);
+                SetProperty(ref _placeName, value);
             }
         }
     }
