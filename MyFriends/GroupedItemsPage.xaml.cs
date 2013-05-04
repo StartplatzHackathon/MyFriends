@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using MyFriends.ViewModels;
+using GalaSoft.MvvmLight.Messaging;
 
 // The Grouped Items Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234231
 
@@ -26,6 +28,25 @@ namespace MyFriends
         public GroupedItemsPage()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            Messenger.Default.Register<Guid>(this, MessageTokens.Navigation, id => NavigateToGift(id));
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+
+            Messenger.Default.Unregister(this);
+        }
+        
+        private void NavigateToGift(Guid giftId)
+        {
+            this.Frame.Navigate(typeof(GroupDetailPage), giftId);
         }
 
         /// <summary>
@@ -42,6 +63,7 @@ namespace MyFriends
             // TODO: Create an appropriate data model for your problem domain to replace the sample data
             var sampleDataGroups = SampleDataSource.GetGroups((String)navigationParameter);
             this.DefaultViewModel["Groups"] = sampleDataGroups;
+            this.DefaultViewModel["AppBar"] = new StartPageAppBarViewModel();
         }
 
         /// <summary>
