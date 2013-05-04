@@ -1,8 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using MyFriends.Annotations;
-using Windows.UI.Xaml.Media.Imaging;
+using MyFriends.Properties;
 
 namespace MyFriends.ViewModels
 {

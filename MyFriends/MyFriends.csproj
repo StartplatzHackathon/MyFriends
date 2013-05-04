@@ -113,6 +113,7 @@
     <Compile Include="Converter\PersonImageConverter.cs" />
     <Compile Include="Messages\NewPersonMessage.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Services\LoadImages.cs" />
     <Compile Include="Services\StoreImages.cs" />
     <Compile Include="ViewModels\PeopleViewModel.cs" />
     <Compile Include="ViewModels\PersonOverViewModel.cs" />

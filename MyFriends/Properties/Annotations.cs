@@ -15,9 +15,8 @@
  */
 
 using System;
-using System.ComponentModel;
 
-namespace MyFriends.Annotations
+namespace MyFriends.Properties
 {
   /// <summary>
   /// Indicates that marked element should be localized or not.

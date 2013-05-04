@@ -4,8 +4,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Messaging;
-using MyFriends.Annotations;
 using MyFriends.Messages;
+using MyFriends.Properties;
 using MyFriends.Services;
 using Windows.ApplicationModel.Contacts;
 using Windows.Foundation;
@@ -55,7 +55,7 @@ namespace MyFriends.ViewModels
                 }
                 if (stream.Size != 0)
                 {
-                    await _storeImages.StorePerson(stream, model.Id);
+                    await _storeImages.StorePersonImage(stream, model.Id);
                     model.ImageId = model.Id;
                 }
             }
