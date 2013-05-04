@@ -70,7 +70,7 @@ namespace MyFriends
             // TODO: Create an appropriate data model for your problem domain to replace the sample data
             var sampleDataGroups = SampleDataSource.GetGroups((String)navigationParameter);
             this.DefaultViewModel["Groups"] = sampleDataGroups;
-            this.DefaultViewModel["AppBar"] = new StartPageAppBarViewModel();
+            //this.DefaultViewModel["AppBar"] = new StartPageAppBarViewModel();
         }
 
         /// <summary>

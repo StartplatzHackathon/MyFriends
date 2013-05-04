@@ -28,5 +28,7 @@ namespace MyFriends.ViewModels
                 SetProperty(ref _placeName, value);
             }
         }
+
+
     }
 }
