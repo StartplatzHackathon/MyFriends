@@ -9,5 +9,6 @@ namespace MyFriends.ViewModels
 {
     public class GiftViewModel : BindableBase
     {
+
     }
 }
