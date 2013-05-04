@@ -111,7 +111,6 @@
     <Compile Include="Common\SuspensionManagerException.cs" />
     <Compile Include="Converter\GiftImageConverter.cs" />
     <Compile Include="Converter\PersonImageConverter.cs" />
-    <Compile Include="DataModel\ImageManager.cs" />
     <Compile Include="Messages\NewPersonMessage.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Services\StoreImages.cs" />

@@ -8,11 +8,11 @@ namespace MyFriends.Converter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            var load = new LoadImages();
             var id = value is Guid ? (Guid) value : Guid.Empty;
             if (id == Guid.Empty)
                 return null;
-            return  load.LoadPersonImage(id);
+
+            return  new LoadImages().LoadPersonImage(id);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)

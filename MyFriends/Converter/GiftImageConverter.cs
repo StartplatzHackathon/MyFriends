@@ -1,15 +1,6 @@
-﻿using MyFriends.DataModel;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Storage;
-using Windows.UI.Core;
-using Windows.UI.Xaml;
+﻿using System;
+using MyFriends.Services;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Media.Imaging;
 
 namespace MyFriends.Converter
 {
@@ -17,25 +8,17 @@ namespace MyFriends.Converter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (value is Guid)
-            {
-                var imageId = (Guid)value;
-                return imageId != Guid.Empty ? CreateBitmapImage(imageId) : null;
-            }
-            else
-            {
+            var id = value is Guid ? (Guid)value : Guid.Empty;
+            if (id == Guid.Empty)
                 return null;
-            }
+
+            return new LoadImages().LoadGiftImage(id);
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             throw new NotImplementedException();
-        }
-
-        private BitmapImage CreateBitmapImage(Guid imageId)
-        {
-            return ImageManager.GetGiftImage(imageId);
         }
     }
 }

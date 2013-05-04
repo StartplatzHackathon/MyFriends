@@ -2,11 +2,14 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Messaging;
 using MyFriends.Annotations;
 using MyFriends.Messages;
 using MyFriends.Services;
 using Windows.ApplicationModel.Contacts;
+using Windows.Media.Capture;
+using Windows.Storage.Streams;
 
 namespace MyFriends.ViewModels
 {
@@ -28,7 +31,7 @@ namespace MyFriends.ViewModels
                         };
             Title = "Personen";
 
-            _messenger.Register<NewPersonMessage>(this, NewPerson);
+            _messenger.Register<NewPersonMessage>(this, newPersonMessage => NewPerson(newPersonMessage));
         }
 
         async void NewPerson(NewPersonMessage newPersonMessage)
@@ -43,13 +46,28 @@ namespace MyFriends.ViewModels
                                     Name = ci.Name
                                 };
                 Items.Add(model);
+
+                
                 var stream =await ci.GetThumbnailAsync();
-                if (stream != null)
+                if (stream.Size == 0)
+                {
+                    stream = await GetCameraStream();
+                }
+                if (stream.Size != 0)
                 {
                     await _storeImages.StorePerson(stream, model.Id);
                     model.ImageId = model.Id;
                 }
             }
+        }
+
+        async Task<IRandomAccessStreamWithContentType> GetCameraStream()
+        {
+            var pictureCapture = new CameraCaptureUI();
+            var file = await pictureCapture.CaptureFileAsync(CameraCaptureUIMode.Photo);
+            if (file == null)
+                return null;
+            return await file.OpenReadAsync();
         }
 
 

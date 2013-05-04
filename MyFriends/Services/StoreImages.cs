@@ -18,7 +18,17 @@ namespace MyFriends.Services
 
         async public Task StorePerson(IRandomAccessStreamWithContentType stream, Guid id)
         {
-            var folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("PersonImages", CreationCollisionOption.OpenIfExists);
+            await StoreImage("PersonImages", stream, id);
+        }
+        async public Task StoreGift(IRandomAccessStreamWithContentType stream, Guid id)
+        {
+            await StoreImage("GiftImages", stream, id);
+        }
+
+        static async Task StoreImage(string folderName, IRandomAccessStreamWithContentType stream, Guid id)
+        {
+            var folder =
+                await ApplicationData.Current.LocalFolder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
 
             var file = await folder.CreateFileAsync(string.Format("{0}", id));
 
@@ -28,6 +38,7 @@ namespace MyFriends.Services
             }
         }
     }
+
     public class LoadImages
     {
         public LoadImages()
@@ -35,13 +46,13 @@ namespace MyFriends.Services
               
         }
 
-        public BitmapImage LoadPersonImage(Guid id)
+        BitmapImage LoadImage(string folderName, Guid id)
         {
             var bitmapImage = new BitmapImage();
 
             Window.Current.Dispatcher.RunAsync(CoreDispatcherPriority.High, async () =>
             {
-                var folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("PersonImages", CreationCollisionOption.OpenIfExists);
+                var folder = await ApplicationData.Current.LocalFolder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
                 try
                 {
                     var imageFile = await folder.GetFileAsync(String.Format("{0}", id));
@@ -51,6 +62,15 @@ namespace MyFriends.Services
             });
 
             return bitmapImage;
+        }
+
+        public BitmapImage LoadGiftImage(Guid id)
+        {
+            return LoadImage("GiftImages", id);
+        }
+        public BitmapImage LoadPersonImage(Guid id)
+        {
+            return LoadImage("PersonImages", id);
         }
     }
 }
