@@ -107,7 +107,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Common\SuspensionManagerException.cs" />
-    <Compile Include="ContactDetailPage.xaml.cs">
+    <Compile Include="ViewModels\PeopleViewModel.cs" />
+    <Compile Include="Views\ContactDetailPage.xaml.cs">
       <DependentUpon>ContactDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataModel\Gift.cs" />
@@ -163,7 +164,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ContactDetailPage.xaml">
+    <Page Include="Views\ContactDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using MyFriends.DataModel;
+using MyFriends.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -16,15 +17,15 @@ using Windows.UI.Xaml.Navigation;
 
 // The Group Detail Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234229
 
-namespace MyFriends
+namespace MyFriends.Views
 {
     /// <summary>
     /// A page that displays an overview of a single group, including a preview of the items
     /// within the group.
     /// </summary>
-    public sealed partial class GroupDetailPage : MyFriends.Common.LayoutAwarePage
+    public sealed partial class ContactDetailPage : MyFriends.Common.LayoutAwarePage
     {
-        public GroupDetailPage()
+        public ContactDetailPage()
         {
             this.InitializeComponent();
         }
@@ -42,8 +43,7 @@ namespace MyFriends
         {
             // TODO: Create an appropriate data model for your problem domain to replace the sample data
             var group = SampleDataSource.GetGroup((String)navigationParameter);
-            this.DefaultViewModel["Group"] = group;
-            this.DefaultViewModel["Items"] = group.Items;
+            this.DefaultViewModel["People"] = new PeopleViewModel();
         }
 
         /// <summary>
@@ -56,8 +56,8 @@ namespace MyFriends
         {
             // Navigate to the appropriate destination page, configuring the new page
             // by passing required information as a navigation parameter
-            var itemId = ((SampleDataItem)e.ClickedItem).UniqueId;
-            this.Frame.Navigate(typeof(ItemDetailPage), itemId);
+            //var itemId = ((SampleDataItem)e.ClickedItem).UniqueId;
+            //this.Frame.Navigate(typeof(ItemDetailPage), itemId);
         }
     }
 }
