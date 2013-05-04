@@ -6,16 +6,11 @@ namespace MyFriends.DataModel
 {
     public class Gift
     {
-        protected Gift()
-        {
-        }
-
-        public Gift(string name)
+        public Gift()
         {
             Id = Guid.NewGuid();
             Categories = new List<string>();
             CreatedUtc = DateTime.UtcNow;
-            Name = name;
         }
 
         public Guid Id { get; set; }
